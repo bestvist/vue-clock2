@@ -85,6 +85,7 @@ $angle: 30deg;
         margin-left: -10px;
         font-weight: 400;
         transform-origin: bottom;
+        user-select: none;
         span {
             display: block;
         }
