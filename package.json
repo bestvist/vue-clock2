@@ -1,8 +1,14 @@
 {
   "name": "vue-clock2",
   "description": "Vue component with clock",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "bestvist",
+  "keywords": [
+    "vue",
+    "component",
+    "clock",
+    "time"
+  ],
   "main": "dist/vue-clock.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --content-base=docs",
