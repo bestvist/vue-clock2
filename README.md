@@ -4,7 +4,7 @@
 ## Install
 
 ```
-npm install vue-clock
+npm install vue-clock2
 ```
 
 ## Example
@@ -15,7 +15,7 @@ npm install vue-clock
 </template>
 
 <script>
-  import Clock from 'vue-clock';
+  import Clock from 'vue-clock2';
   export default {
     components: { Clock },
     data () {
