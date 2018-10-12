@@ -44,6 +44,8 @@ npm install vue-clock2
 
 ## Props
 
-| property | description | type | default |
-|-|-|-|-|
-| time | time to display | String | - |
+| Property | Description | Type | Accepted Values | Default |
+|-|-|-|-|-|
+| time | time to display | String | - | - |
+| color | color to display | String | - | - |
+| size | size to display | String | small | - |
