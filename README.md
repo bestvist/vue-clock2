@@ -40,6 +40,8 @@ npm install vue-clock2
 </script>
 ```
 
+![](./clock.png)
+
 ## Props
 
 | property | description | type | default |
