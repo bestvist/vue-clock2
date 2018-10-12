@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <div class="watch">
-      <div class="watch-clock"></div>
-      <div class="clock-hour" :style="{transform:hourRotate}"></div>
-      <div class="clock-minute" :style="{transform:minuteRotate}"></div>
-      <b class="hour" v-for="h in timeList" :key="h">
-        <span>{{h}}</span>
-      </b>
+    <div>
+        <div class="clock" :class="{'is-small':size==='small'}" :style="{color: color}">
+            <div class="clock-circle"></div>
+            <div class="clock-hour" :style="{transform:hourRotate}"></div>
+            <div class="clock-minute" :style="{transform:minuteRotate}"></div>
+            <b class="hour" v-for="h in timeList" :key="h">
+                <span>{{h}}</span>
+            </b>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
             minuteRotate: "rotatez(0deg)"
         };
     },
-    props: ["time"],
+    props: ["time", "color", "size"],
     watch: {
         time() {
             this.show();
@@ -57,8 +57,8 @@ export default {
     mounted() {
         this.show();
     },
-    destroyed(){
-      if (this._timer) clearInterval(this._timer);
+    destroyed() {
+        if (this._timer) clearInterval(this._timer);
     }
 };
 </script>
@@ -66,14 +66,17 @@ export default {
 <style lang="scss" scoped>
 $angle: 30deg;
 
-.watch {
+.clock {
     position: relative;
+    display: inline-block;
+    vertical-align: middle;
     width: 150px;
     height: 150px;
     margin: 10px auto;
     border: 2px solid;
     border-radius: 100%;
     text-align: center;
+    font-size: 14px;
 
     .hour {
         position: absolute;
@@ -158,7 +161,7 @@ $angle: 30deg;
         }
     }
 
-    .watch-clock {
+    .clock-circle {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -167,19 +170,21 @@ $angle: 30deg;
         transform: translate(-50%, -50%);
         border: 3px solid #666666;
         border-radius: 100%;
-        background: #ffffff;
+        background-color: #ffffff;
         z-index: 1;
         box-sizing: border-box;
 
         &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: block;
             content: "";
             width: 4px;
             height: 4px;
-            margin-top: 3px;
-            margin-left: 3px;
             border-radius: 100%;
-            background: #666666;
+            background-color: #666666;
         }
     }
 
@@ -194,7 +199,7 @@ $angle: 30deg;
         margin-left: -1px;
         border-radius: 5px;
         transform-origin: bottom;
-        background: #666666;
+        background-color: #666666;
     }
 
     .clock-hour {
@@ -202,6 +207,23 @@ $angle: 30deg;
         width: 4px;
         height: 20%;
         margin-left: -2px;
+    }
+}
+
+.clock.is-small {
+    width: 80px;
+    height: 80px;
+    border-width: 1px;
+    font-size: 12px;
+
+    .clock-circle {
+        width: 10px;
+        height: 10px;
+        border-width: 1px;
+        &:before {
+            width: 2px;
+            height: 2px;
+        }
     }
 }
 </style>
