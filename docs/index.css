@@ -73,5 +73,7 @@ h3 {
   margin-left: auto;
 }
 
-
+.example-item-component {
+  text-align: center;
+}
 

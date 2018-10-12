@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <div class="clock" :class="{'is-small':size==='small'}" :style="{color: color}">
-            <div class="clock-circle"></div>
-            <div class="clock-hour" :style="{transform:hourRotate}"></div>
-            <div class="clock-minute" :style="{transform:minuteRotate}"></div>
-            <b class="hour" v-for="h in timeList" :key="h">
-                <span>{{h}}</span>
-            </b>
-        </div>
+    <div class="clock" :class="{'is-small':size==='small'}" :style="{color: color}">
+        <div class="clock-circle"></div>
+        <div class="clock-hour" :style="{transform:hourRotate}"></div>
+        <div class="clock-minute" :style="{transform:minuteRotate}"></div>
+        <b class="hour" v-for="h in timeList" :key="h">
+            <span>{{h}}</span>
+        </b>
     </div>
 </template>
 
