@@ -1,4 +1,4 @@
-<h1 align="center">vue clock</h1>
+<h1 align="center">vue clock2</h1>
 
 <p align="center">
   <a href="https://npmjs.org/package/vue-clock2">

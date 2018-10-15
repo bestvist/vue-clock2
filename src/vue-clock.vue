@@ -92,70 +92,12 @@ $angle: 30deg;
         }
     }
 
-    .hour:nth-of-type(2) {
-        transform: rotatez($angle);
-        span {
-            transform: rotatez(-$angle);
-        }
-    }
-    .hour:nth-of-type(3) {
-        transform: rotatez($angle * 2);
-        span {
-            transform: rotatez(-$angle * 2);
-        }
-    }
-    .hour:nth-of-type(4) {
-        transform: rotatez($angle * 3);
-        span {
-            transform: rotatez(-$angle * 3);
-        }
-    }
-    .hour:nth-of-type(5) {
-        transform: rotatez($angle * 4);
-        span {
-            transform: rotatez(-$angle * 4);
-        }
-    }
-    .hour:nth-of-type(6) {
-        transform: rotatez($angle * 5);
-        span {
-            transform: rotatez(-$angle * 5);
-        }
-    }
-    .hour:nth-of-type(7) {
-        transform: rotatez($angle * 6);
-        span {
-            transform: rotatez(-$angle * 6);
-        }
-    }
-    .hour:nth-of-type(8) {
-        transform: rotatez($angle * 7);
-        span {
-            transform: rotatez(-$angle * 7);
-        }
-    }
-    .hour:nth-of-type(9) {
-        transform: rotatez($angle * 8);
-        span {
-            transform: rotatez(-$angle * 8);
-        }
-    }
-    .hour:nth-of-type(10) {
-        transform: rotatez($angle * 9);
-        span {
-            transform: rotatez(-$angle * 9);
-        }
-    }
-    .hour:nth-of-type(11) {
-        transform: rotatez($angle * 10);
-        span {
-            transform: rotatez(-$angle * 10);
-        }
-    }
-    .hour:nth-of-type(12) {
-        transform: rotatez($angle * 11);
-        span {
-            transform: rotatez(-$angle * 11);
+    @for $i from 2 through 12 {
+        .hour:nth-of-type(#{$i}) {
+            transform: rotatez(#{$angle * ($i - 1)});
+            > span {
+                transform: rotatez(#{-$angle * ($i - 1)});
+            }
         }
     }
 
