@@ -42,10 +42,16 @@ npm install vue-clock2
 
 ![](./clock.png)
 
+## Styles
+
+![](./clock-color.png)
+
 ## Props
 
 | Property | Description | Type | Accepted Values | Default |
 |-|-|-|-|-|
 | time | time to display | String | - | - |
 | color | color to display | String | - | - |
+| border | clock border style | String | - | '2px solid' |
+| bg | clock background style | String | - | - |
 | size | size to display | String | small | - |

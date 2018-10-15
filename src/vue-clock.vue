@@ -1,5 +1,5 @@
 <template>
-    <div class="clock" :class="{'is-small':size==='small'}" :style="{color: color}">
+    <div class="clock" :class="{'is-small':size==='small'}" :style="clockStyle">
         <div class="clock-circle"></div>
         <div class="clock-hour" :style="{transform:hourRotate}"></div>
         <div class="clock-minute" :style="{transform:minuteRotate}"></div>
@@ -18,7 +18,16 @@ export default {
             minuteRotate: "rotatez(0deg)"
         };
     },
-    props: ["time", "color", "size"],
+    props: ["time", "color", "border", "bg", "size"],
+    computed: {
+        clockStyle() {
+            return {
+                color: this.color,
+                border: this.border,
+                background: this.bg
+            };
+        }
+    },
     watch: {
         time() {
             this.show();
