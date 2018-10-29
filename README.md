@@ -22,6 +22,8 @@ npm install vue-clock2
 
 ## Example
 
+[Demo](https://bestvist.github.io/vue-clock2/docs/)
+
 ```
 <template>
   <clock :time="time"></clock>
