@@ -1,10 +1,14 @@
 <template>
-    <div class="clock" :class="{'is-small':size==='small'}" :style="clockStyle">
+    <!-- <div class="clock" :class="{'is-small':size==='small'}" :style="clockStyle"> -->
+    <div class="clock" :style="clockStyle">
         <div class="clock-circle"></div>
         <div class="clock-hour" :style="{transform:hourRotate}"></div>
         <div class="clock-minute" :style="{transform:minuteRotate}"></div>
+        <div class="clock-second" :style="{transform:secondRotate}"></div>
         <b class="hour" v-for="h in timeList" :key="h">
-            <span>{{h}}</span>
+            <span>
+                <i :style="{transform:transform}">{{h}}</i>
+            </span>
         </b>
     </div>
 </template>
@@ -14,14 +18,18 @@ export default {
     data() {
         return {
             timeList: [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+            transform: "scale(1)",
             hourRotate: "rotatez(0deg)",
-            minuteRotate: "rotatez(0deg)"
+            minuteRotate: "rotatez(0deg)",
+            secondRotate: "rotatez(0deg)"
         };
     },
     props: ["time", "color", "border", "bg", "size"],
     computed: {
         clockStyle() {
             return {
+                height: this.size,
+                width: this.size,
                 color: this.color,
                 border: this.border,
                 background: this.bg
@@ -40,7 +48,7 @@ export default {
             if (!this.time) {
                 this._timer = setInterval(() => {
                     this.showTime();
-                }, 60 * 1000);
+                }, 1000);
             }
         },
         showTime() {
@@ -49,19 +57,23 @@ export default {
                 times = this.time.split(":");
             } else {
                 const now = new Date();
-                times = [now.getHours(), now.getMinutes()];
+                times = [now.getHours(), now.getMinutes(), now.getSeconds()];
             }
 
             let hour = +times[0];
             hour = hour > 11 ? hour - 12 : hour;
             let minute = +times[1];
+            let second = +times[2] || 0;
             let hourAngle = hour * 30 + minute * 6 / 360 * 30;
             let minuteAngle = minute * 6;
+            let secondAngle = second * 6;
             this.hourRotate = `rotatez(${hourAngle}deg)`;
             this.minuteRotate = `rotatez(${minuteAngle}deg)`;
+            this.secondRotate = `rotatez(${secondAngle}deg)`;
         }
     },
     mounted() {
+        this.transform = `scale(${this.$el.clientWidth / 120})`;
         this.show();
     },
     destroyed() {
@@ -93,11 +105,18 @@ $angle: 30deg;
         width: 20px;
         height: 50%;
         margin-left: -10px;
+        padding-top: 4px;
         font-weight: 400;
         transform-origin: bottom;
         user-select: none;
-        span {
+        box-sizing: border-box;
+        > span {
             display: block;
+
+            > i {
+                display: block;
+                font-style: normal;
+            }
         }
     }
 
@@ -117,7 +136,7 @@ $angle: 30deg;
         width: 16px;
         height: 16px;
         transform: translate(-50%, -50%);
-        border: 3px solid #666666;
+        border: 2px solid #666666;
         border-radius: 100%;
         background-color: #ffffff;
         z-index: 1;
@@ -138,7 +157,8 @@ $angle: 30deg;
     }
 
     .clock-hour,
-    .clock-minute {
+    .clock-minute,
+    .clock-second {
         position: absolute;
         top: 15%;
         left: 50%;
@@ -156,6 +176,10 @@ $angle: 30deg;
         width: 4px;
         height: 20%;
         margin-left: -2px;
+    }
+
+    .clock-second {
+        width: 1px;
     }
 }
 
