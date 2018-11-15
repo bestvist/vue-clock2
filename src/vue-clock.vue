@@ -73,7 +73,9 @@ export default {
         }
     },
     mounted() {
-        this.transform = `scale(${this.$el.clientWidth / 120})`;
+        let scale = this.$el.clientWidth / 120;
+        scale = scale > 3 ? 3 : scale;
+        this.transform = `scale(${scale})`;
         this.show();
     },
     destroyed() {
@@ -91,7 +93,6 @@ $angle: 30deg;
     vertical-align: middle;
     width: 150px;
     height: 150px;
-    margin: 10px auto;
     border: 2px solid;
     border-radius: 100%;
     text-align: center;
@@ -105,7 +106,7 @@ $angle: 30deg;
         width: 20px;
         height: 50%;
         margin-left: -10px;
-        padding-top: 4px;
+        padding-top: 4%;
         font-weight: 400;
         transform-origin: bottom;
         user-select: none;

@@ -35,7 +35,7 @@ npm install vue-clock2
     components: { Clock },
     data () {
       return {
-          time: '10:40'
+          time: '10:40:00'
       }
     }
   }
@@ -56,4 +56,8 @@ npm install vue-clock2
 | color | color to display | String | - | - |
 | border | clock border style | String | - | '2px solid' |
 | bg | clock background style | String | - | - |
-| size | size to display | String | small | - |
+| size | size to display | String | - | 150px |
+
+## License
+
+[MIT](https://github.com/bestvist/vue-clock2/blob/master/LICENSE) 
