@@ -12,19 +12,27 @@
   </a>
 </p>
 
-> vue clock component
+> Analogue Clock Component for Vue.js
+
 
 ## Install
 
-```
+```console
 npm install vue-clock2
 ```
 
-## Example
+or
+
+```console
+yarn add vue-clock2
+```
+
+
+## Example for Vue.js 2
 
 [Demo](https://bestvist.github.io/vue-clock2/docs/)
 
-```
+```html
 <template>
   <clock :time="time"></clock>
 </template>
@@ -42,11 +50,47 @@ npm install vue-clock2
 </script>
 ```
 
+
+## Example for Nuxt.js 2.10+
+
+```js
+// Add this to ~/plugins/clock.js
+
+import Clock from 'vue-clock2';
+import Vue from 'vue';
+
+Vue.component('clock', Clock);
+```
+
+```js
+// Add clock.js to your nuxt.config.js
+plugins: [
+  { src: '~plugins/clock', mode: 'client' }
+],
+```
+
+```html
+<!--
+Wrap any <clock> components like so:
+-->
+
+<template>
+  <client-only>
+    <clock :time="time"></clock>
+  </client-only>
+</template>
+```
+
+
+## Default Style
+
 ![](./clock.png)
 
-## Styles
+
+## Some Sample Styles
 
 ![](./clock-color.png)
+
 
 ## Props
 
@@ -57,6 +101,7 @@ npm install vue-clock2
 | border | clock border style | String | - | '2px solid' |
 | bg | clock background style | String | - | - |
 | size | size to display | String | - | 150px |
+
 
 ## License
 
